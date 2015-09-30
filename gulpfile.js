@@ -6,6 +6,12 @@ var connect = require('gulp-connect');
 
 gulp.task('connect', function() {
 	connect.server();
+	/*
+	connect.server({
+		root: 'dist',
+		livereload: true
+	});
+	*/
 });
 
 gulp.task('clean', function(cb) {
@@ -50,6 +56,10 @@ gulp.task('builder', ['clean', 'copy-json', 'copy-html', 'copy-dali'], function 
 		console.log( err );
 		cb();
 	});
+});
+
+gulp.task('watch', function () {
+	gulp.watch(['src/**/*.js'], ['default']);
 });
 
 gulp.task('default', ['builder']);

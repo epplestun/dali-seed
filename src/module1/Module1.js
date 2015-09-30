@@ -29,6 +29,9 @@ export class Module1 {
 
   date = new Date();
 
+  @Bindable
+  test = "aaa";
+
   constructor(service) {    
     service.get().then(this.insert.bind(this));
   }
