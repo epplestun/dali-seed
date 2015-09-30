@@ -12,6 +12,11 @@ gulp.task('clean', function(cb) {
   return del(['dist/main.js'], cb);
 });
 
+gulp.task('copy-json', function() {
+	return gulp.src('src/**/*.json')
+    .pipe(gulp.dest('dist/data/'));
+});
+
 gulp.task('copy-html', function() {
    return gulp.src('src/**/*.html')
     .pipe(gulp.dest('dist'));
@@ -22,7 +27,7 @@ gulp.task('copy-dali', function() {
 		.pipe(gulp.dest('src/dali/'));
 });
 
-gulp.task('builder', ['clean', 'copy-html', 'copy-dali'], function (cb) {
+gulp.task('builder', ['clean', 'copy-json', 'copy-html', 'copy-dali'], function (cb) {
 	builder.buildSFX('main', 'dist/main.js', {
 		sourceMaps: false,
 		config: {
