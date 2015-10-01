@@ -4,17 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Dali App</title>
+    <!-- @if NODE_ENV='production' -->
     <script src="main.js"></script>
+    <!-- @endif -->
   </head>
 
   <body>
     <app></app>
 
-    <!--
+    <!-- @if NODE_ENV='development' -->
     <script src="../node_modules/systemjs/dist/system.js"></script>
     <script>
       // set our baseURL reference path
       System.config({
+        baseURL: '../src',
         defaultJSExtensions: true,
         map: {
           babel: '../node_modules/babel-core/browser.js'
@@ -35,6 +38,6 @@
       // loads /app/main.js
       System.import('main.js');
     </script>
-    -->
+    <!-- @endif -->
   </body>
 </html>
