@@ -1,13 +1,19 @@
 {
-  "name": "test",
+  "name": "dali-seed",
   "version": "1.0.0",
-  "description": "",
+  "description": "Seed project for dali apps.",
   "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epplestun/dali-seed.git"
   },
-  "author": "epplestun <epplestun@gmail.com>",
-  "license": "ISC",
+  "author": "Iván Rodríguez <epplestun@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epplestun/dali-seed/issues"
+  },
+  "homepage": "https://github.com/epplestun/dali-seed",
   "devDependencies": {
     "babel-core": "^5.8.23",
     "dalijs": "latest",

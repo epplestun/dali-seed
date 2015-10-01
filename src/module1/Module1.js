@@ -30,7 +30,7 @@ export class Module1 {
   date = new Date();
 
   @Bindable
-  test = "aaa";
+  test = "yeap!!!";
 
   constructor(service) {    
     service.get().then(this.insert.bind(this));
