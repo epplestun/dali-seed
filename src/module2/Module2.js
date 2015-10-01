@@ -1,7 +1,8 @@
 import {
   RouterConfig,
   View,
-  Runnable
+  Runnable,
+  Bindable
 } from 'dali/dali';
 
 @RouterConfig({
@@ -9,8 +10,10 @@ import {
   path : '/m2'
 })
 @View({
-  template: '<h2>Module2</h2>'
+  templateUrl: 'module2/module2_view.html'
 })
 @Runnable
 export class Module2 {
+  @Bindable
+  title = "Module 2 title";
 }

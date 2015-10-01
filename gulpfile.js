@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var del = require('del');
+var connect = require('gulp-connect');
 var Builder = require('systemjs-builder');
 var builder = new Builder();
-var connect = require('gulp-connect');
 
 gulp.task('clean', function(cb) {
   return del(['dist/main.js'], cb);
@@ -44,11 +44,18 @@ gulp.task('build', function () {
 	});
 });
 
-gulp.task('builder', ['clean', 'copy-json', 'copy-html', 'copy-dali', 'build']);
+gulp.task('build:pro', ['clean', 'copy-json', 'copy-html', 'copy-dali', 'build']);
 
-gulp.task('connect', function() {	
+gulp.task('connect:pro', function() {	
 	connect.server({
-		root: 'dist'
+		root: 'dist',
+		livereload: true
+	});
+});
+
+gulp.task('connect:dev', function() {	
+	connect.server({
+		livereload: true
 	});
 });
 
@@ -57,7 +64,7 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function () {
-	gulp.watch(['src/**/*.js'], ['build']);
+	gulp.watch('src/**/*.html', ['copy-html', 'reload']);
 });
 
-gulp.task('default', ['builder']);
+gulp.task('default', ['copy-dali', 'connect:dev' , 'watch']);
