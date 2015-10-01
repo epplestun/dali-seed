@@ -15,17 +15,15 @@
     <!-- @if NODE_ENV='development' -->
     <script src="../node_modules/systemjs/dist/system.js"></script>
     <script>
-      // set our baseURL reference path
       System.config({
-        baseURL: '../src',
+        baseURL: '../src/',
         defaultJSExtensions: true,
         map: {
           babel: '../node_modules/babel-core/browser.js'
         },
-        // or 'traceur' or 'typescript'
         transpiler: 'babel',
-        // or traceurOptions or typescriptOptions
         babelOptions: {
+          experimental: true,
           optional: [
             "es7.decorators",
             "es7.classProperties",
@@ -35,7 +33,6 @@
         }
       });
 
-      // loads /app/main.js
       System.import('main.js');
     </script>
     <!-- @endif -->
