@@ -25,6 +25,7 @@ gulp.task('copy-dali', function() {
 
 gulp.task('build', function () {
 	builder.buildSFX('main', 'dist/main.js', {
+		minify: false,
 		sourceMaps: false,
 		config: {
 			baseURL: 'src',
@@ -48,7 +49,6 @@ gulp.task('builder', ['clean', 'copy-json', 'copy-html', 'copy-dali', 'build']);
 gulp.task('connect', function() {	
 	connect.server({
 		root: 'dist'
-		//livereload: true
 	});
 });
 
