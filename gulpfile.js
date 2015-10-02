@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var del = require('del');
 var connect = require('gulp-connect');
-var preprocess = require('gulp-preprocess');
 var Builder = require('systemjs-builder');
 var builder = new Builder();
 
@@ -14,18 +13,8 @@ gulp.task('copy-json', function() {
     .pipe(gulp.dest('dist/data/'));
 });
 
-gulp.task('copy-html:dev', function() {
+gulp.task('copy-html', function() {
    return gulp.src('src/**/*.html')
-   	.pipe(preprocess({
-   		context: { NODE_ENV: 'development' }
-   	}))
-    .pipe(gulp.dest('dist'));
-});
-gulp.task('copy-html:pro', function() {
-   return gulp.src('src/**/*.html')
-   	.pipe(preprocess({
-   		context: { NODE_ENV: 'production' }
-   	})) 
     .pipe(gulp.dest('dist'));
 });
 
@@ -34,38 +23,32 @@ gulp.task('copy-dali', function() {
 		.pipe(gulp.dest('src/dali/'));
 });
 
-gulp.task('build', function () {
-	builder.buildSFX('main', 'dist/main.js', {
-		minify: false,
-		sourceMaps: false,
-		config: {
-			baseURL: 'src',
-			defaultJSExtensions: true,
-			transpiler: 'babel',
-			experimental: true,
-			babelOptions: {
-				optional: [
-					"es7.decorators",
-					"es7.classProperties",
-					"es7.exportExtensions",
-					"es7.functionBind"
-				]
-			}			
-		}
-	});
+gulp.task('js', function() {
+  builder.buildSFX('main', 'dist/main.js', {
+    minify: false,
+    sourceMaps: false,
+    config: {
+      baseURL: 'src',
+      defaultJSExtensions: true,
+      transpiler: 'babel',
+      experimental: true,
+      babelOptions: {
+        optional: [
+          "es7.decorators",
+          "es7.classProperties",
+          "es7.exportExtensions",
+          "es7.functionBind"
+        ]
+      }     
+    }
+  });
 });
 
-gulp.task('build:pro', ['clean', 'copy-json', 'copy-html:pro', 'copy-dali', 'build']);
+gulp.task('build', ['clean', 'copy-json', 'copy-html', 'copy-dali', 'js']);
 
-gulp.task('connect:pro', function() {	
+gulp.task('connect', function() {	
 	connect.server({
 		root: 'dist',
-		livereload: true
-	});
-});
-
-gulp.task('connect:dev', function() {	
-	connect.server({
 		livereload: true
 	});
 });
@@ -75,7 +58,9 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function () {
-	gulp.watch('src/**/*.html', ['copy-html:dev', 'reload']);
+	gulp.watch('src/**/*.html', ['copy-html', 'reload']);
+  gulp.watch('src/**/*.js', ['js']);
 });
 
-gulp.task('default', ['copy-html:dev','copy-dali', 'connect:dev' , 'watch']);
+
+gulp.task('default', ['connect', 'watch']);
