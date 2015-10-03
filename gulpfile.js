@@ -28,8 +28,9 @@ gulp.task('build-html', function() {
 gulp.task('build-scripts', function() {
 	var builder = new Builder();
   return builder.buildSFX('main', 'dist/main.js', {
-    minify: false,
-    sourceMaps: false,
+    minify: true,
+    mangle: false,
+    sourceMaps: true, // true in dev env, false in pro
     config: {
       paths: {
       	'dali': './node_modules/dalijs/dist/'
