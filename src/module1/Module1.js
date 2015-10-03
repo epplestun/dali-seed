@@ -3,7 +3,7 @@ import {
   View,
   Runnable,
   Inject
-} from 'dali/dali';
+} from 'dali';
 
 import {DateFilter} from 'filters/DateFilter';
 import {Todo} from './Todo';

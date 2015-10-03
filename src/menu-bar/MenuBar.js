@@ -3,7 +3,7 @@ import {
   View,
   Bindable,
   Runnable,
-} from 'dali/dali';
+} from 'dali';
 
 @Component({
   name: 'menu-bar'

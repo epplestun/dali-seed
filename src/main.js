@@ -6,7 +6,7 @@ import {
   Bindable,
   Runnable,
   RouterContent
-} from 'dali/dali';
+} from 'dali';
 
 import {MenuBar} from 'menu-bar/MenuBar';
 import {Module1} from 'module1/Module1';

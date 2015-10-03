@@ -2,7 +2,7 @@ import {
   RouterConfig,
   View,
   Runnable
-} from 'dali/dali';
+} from 'dali';
 
 @RouterConfig({
   title: 'Module 3',

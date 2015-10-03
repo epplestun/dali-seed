@@ -32,9 +32,9 @@ gulp.task('build-scripts', function() {
     mangle: false,
     sourceMaps: true, // true in dev env, false in pro
     config: {
-      paths: {
-      	'dali': './node_modules/dalijs/dist/'
-      },
+  	 	paths: {
+		    dali: '../dali-seed/node_modules/dalijs/dist/dali.js'
+		  },
       baseURL: 'src',
       defaultJSExtensions: true,
       transpiler: 'babel',

@@ -2,7 +2,7 @@ import {
   Directive,
   Inject,
   Evaluator
-} from 'dali/dali';
+} from 'dali';
 
 @Directive({
   name: 'data-show'

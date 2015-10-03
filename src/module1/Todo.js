@@ -4,7 +4,7 @@ import {
   JsonIgnoreProperties,
   JsonProperty,
   JsonIgnore
-} from 'dali/dali';
+} from 'dali';
 
 @Json
 @JsonPropertyOrder('description', 'title')

@@ -1,4 +1,4 @@
-import {Filter} from 'dali/dali';
+import {Filter} from 'dali';
 
 @Filter
 export class DateFilter {

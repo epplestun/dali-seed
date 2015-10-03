@@ -1,4 +1,4 @@
-import {HTTP} from 'dali/dali';
+import {HTTP} from 'dali';
 
 export class Service {  
   get() {

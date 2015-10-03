@@ -4,7 +4,7 @@ import {
   Runnable,
   Bindable,
   Filter
-} from 'dali/dali';
+} from 'dali';
 
 import {Service} from 'Service';
 
