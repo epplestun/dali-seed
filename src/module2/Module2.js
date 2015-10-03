@@ -2,18 +2,10 @@ import {
   RouterConfig,
   View,
   Runnable,
-  Bindable,
-  Filter
+  Bindable
 } from 'dali';
 
 import {Service} from 'Service';
-
-@Filter
-class JsonFilter {
-  render(value, extra) {
-    return JSON.stringify(value, null, ' ');
-  }
-}
 
 @RouterConfig({
   title: 'Module 2',
