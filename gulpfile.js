@@ -1,33 +1,39 @@
 var gulp = require('gulp');
 var del = require('del');
 var connect = require('gulp-connect');
+var runSequence = require('run-sequence');
 var Builder = require('systemjs-builder');
-var builder = new Builder();
 
-gulp.task('clean', function(cb) {
-  return del(['dist/main.js'], cb);
+gulp.task('build', function(callback) {
+	runSequence(
+		'build-clean', 
+		['build-data', 'build-html'], 
+		'build-scripts',
+		callback
+	);
 });
 
-gulp.task('copy-json', function() {
-	return gulp.src('src/**/*.json')
-    .pipe(gulp.dest('dist/data/'));
+gulp.task('build-clean', function(callback) {
+  return del(['dist/main.js'], callback);
 });
 
-gulp.task('copy-html', function() {
-   return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('dist'));
+gulp.task('build-data', function() {
+	return gulp.src('src/**/*.json').pipe(gulp.dest('dist/data/'));
 });
 
-gulp.task('copy-dali', function() {
-	return gulp.src('node_modules/dalijs/dist/dali.js')
-		.pipe(gulp.dest('src/dali/'));
+gulp.task('build-html', function() {
+	return gulp.src('src/**/*.html').pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', function() {
-  builder.buildSFX('main', 'dist/main.js', {
+gulp.task('build-scripts', function() {
+	var builder = new Builder();
+  return builder.buildSFX('main', 'dist/main.js', {
     minify: false,
     sourceMaps: false,
     config: {
+      paths: {
+      	'dali': './node_modules/dalijs/dist/'
+      },
       baseURL: 'src',
       defaultJSExtensions: true,
       transpiler: 'babel',
@@ -44,8 +50,6 @@ gulp.task('js', function() {
   });
 });
 
-gulp.task('build', ['clean', 'copy-json', 'copy-html', 'copy-dali', 'js']);
-
 gulp.task('connect', function() {	
 	connect.server({
 		root: 'dist',
@@ -58,8 +62,13 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function () {
-	gulp.watch('src/**/*.html', ['copy-html', 'reload']);
-  gulp.watch('src/**/*.js', ['js']);
+	gulp.watch('src/**/*.html', function() {
+		runSequence('build-html')
+	});
+
+  gulp.watch('src/**/*.js', function() {
+  	runSequence('build-scripts');
+  });
 });
 
 

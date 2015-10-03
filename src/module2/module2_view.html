@@ -1,5 +1,13 @@
-<h2>Module2</h2>
+<h2>{{name}}</h2>
 
 <div>
-  Text of moudule 2 <strong>{{title}}</strong>
+  <pre>{{service | jsonFilter}}</pre>
+  
+  <hr/>
+  {{item}}
+  <hr/>
+
+  <input type="text" *model="item" />
+  
+  <button _click="add()" title="Add">Add</button><button _click="clean()" title="{{item}}">Clear</button>
 </div>

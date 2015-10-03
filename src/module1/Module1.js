@@ -6,8 +6,6 @@ import {
 } from 'dali/dali';
 
 import {DateFilter} from 'filters/DateFilter';
-import {Service} from 'Service';
-
 import {Todo} from './Todo';
 
 @RouterConfig({
@@ -19,19 +17,14 @@ import {Todo} from './Todo';
   templateUrl: 'module1/module1_view.html'
 })
 @Runnable
-@Inject(Service)
 export class Module1 {  
   @Bindable
-  name = "My First App!!";
+  name = "InMemory example";
 
   @Bindable
   todos = [];
 
-  date = new Date();
-
-  @Bindable
-  test = "yeap!!!";
-
+  /*
   constructor(service) {    
     service.get().then(this.insert.bind(this));
   }
@@ -41,6 +34,7 @@ export class Module1 {
       this.todos.push(Todo.fromJson(item));
     }.bind(this));
   }
+  */
 
   add() {
     this.todos.push(Todo.fromJson({

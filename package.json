@@ -23,6 +23,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.2.0",
     "gulp-preprocess": "^1.2.0",
+    "run-sequence": "^1.1.4",
     "systemjs": "^0.18.17",
     "systemjs-builder": "^0.13.5"
   }
