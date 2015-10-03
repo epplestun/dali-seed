@@ -1,8 +1,22 @@
 var gulp = require('gulp');
 var del = require('del');
 var connect = require('gulp-connect');
+var mocha = require('gulp-mocha');
+var babel = require('babel/register');
+
 var runSequence = require('run-sequence');
 var Builder = require('systemjs-builder');
+
+
+gulp.task('test', function() {
+  return gulp.src(['test/**/*.js'])
+    .pipe(mocha({
+      //reporter: 'list',
+      compilers: {
+        js: babel
+      }
+    }));
+});
 
 gulp.task('build', function(callback) {
 	runSequence(
