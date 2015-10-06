@@ -12,7 +12,7 @@ import {MyComponent} from './MyComponent';
   path : '/m3'
 })
 @View({
-  template: '<h2>Custom directive</h2><button _click="toggle()">Show component</button><h2>Custom component</h2><my-component *show="show"></my-component>'
+  template: '<h2>Custom directive</h2><button _click="toggle()">Show component</button><h2>Custom component</h2><my-component *show="!!show"></my-component>'
 })
 @Runnable
 @Inject(MyComponent)
