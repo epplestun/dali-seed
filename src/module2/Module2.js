@@ -33,7 +33,7 @@ export class Module2 {
   refresh() {
     this.service.get().then((data) => {
       this.todos = [];
-      
+
       JSON.parse(data).forEach(item => {
         this.todos.push(Todo.fromJson(item));
       }.bind(this));
