@@ -6,7 +6,7 @@ import {
 } from 'dali';
 
 import {DateFilter} from 'filters/DateFilter';
-import {Todo} from './Todo';
+import {Todo} from 'Todo';
 
 @RouterConfig({
   title: 'Module 1',
@@ -23,18 +23,6 @@ export class Module1 {
 
   @Bindable
   todos = [];
-
-  /*
-  constructor(service) {    
-    service.get().then(this.insert.bind(this));
-  }
-
-  insert(data) {
-    JSON.parse(data).forEach(item => {
-      this.todos.push(Todo.fromJson(item));
-    }.bind(this));
-  }
-  */
 
   add() {
     this.todos.push(Todo.fromJson({

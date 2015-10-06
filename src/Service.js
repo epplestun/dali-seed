@@ -6,18 +6,32 @@ export class Service {
   }
 
   add() {
-    console.log('service.add', arguments);
+    return new Promise((resolve) => {
+      console.log('service.add', arguments);
+      resolve();
+    });
   }
 
   remove() {
-    console.log('service.remove', arguments);
+    return new Promise((resolve) => {
+      console.log('service.remove', arguments);
+      resolve();
+    });
   }
 
   clean() {
-    console.log('service.clean', arguments);
+    return new Promise((resolve) => {
+      console.log('service.clean', arguments);
+      resolve();
+    });
+
   }
 
   load() {
-    console.log('service.load', arguments);
+    return new Promise((resolve) => {
+      console.log('service.load', arguments);
+      resolve();
+    });
+
   }
 }

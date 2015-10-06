@@ -1,8 +1,12 @@
 <h2>{{name}}</h2>
 
 <div>
-  <pre>{{service | jsonFilter}}</pre>
-  
+  <pre>{{todos | jsonFilter}}</pre>
+
+  <ul>
+    <li *for="todo in todos track by $index">{{todo.title}} - {{todo.date}} <a _click="load(todo)">Load</a> - <a _remove="remove(todo, $index)">Remove</a></li>
+  </ul>
+
   <hr/>
   {{item}}
   <hr/>
