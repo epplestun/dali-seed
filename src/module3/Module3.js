@@ -1,7 +1,8 @@
 import {
   RouterConfig,
   View,
-  Runnable
+  Runnable,
+  AsyncTask,
 } from 'dali';
 
 import {DataShow} from 'directives/DataShow';
@@ -22,5 +23,13 @@ export class Module3 {
 
   toggle() {
     this.show = !this.show;
+
+    let task = new AsyncTask((a, b) => {
+      return a + b;
+    });
+
+    task.execute(2, 2).then((result) => {
+      console.log('Result', result);
+    });
   }
 }
