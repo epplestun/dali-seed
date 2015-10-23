@@ -25,6 +25,11 @@ export class Module3 {
     this.show = !this.show;
 
     let task = new AsyncTask((a, b) => {
+
+      for(var i = 0; i < 20000; i++) {
+        console.log(i);
+      }
+
       return a + b;
     });
 
