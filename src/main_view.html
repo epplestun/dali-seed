@@ -1,8 +1,13 @@
-<h1>{{appName}}</h1>
+<h1 *i18n="app.title"></h1>
 
 {{date}}
 
 <p *i18n="date | L"></p>
+
+{{number}}
+
+<p *i18n="number | currency"></p>
+
 <menu-bar></menu-bar>
 <main>
   <router-content></router-content>

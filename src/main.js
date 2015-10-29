@@ -46,6 +46,9 @@ class App {
 
   @Bindable
   date = new Date();
+
+  @Bindable
+  number = 100000;
 }
 
 bootstrap(App);
