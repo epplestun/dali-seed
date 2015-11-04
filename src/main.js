@@ -15,7 +15,7 @@ import {Module1} from 'module1/Module1';
 import {Module2} from 'module2/Module2';
 import {Module3} from 'module3/Module3';
 
-let config = {
+i18nConfig.init({
   locale: 'en-US',
   timezone: 'Europe/Madrid',
   currency: 'EUR',
@@ -29,8 +29,7 @@ let config = {
       }
     }
   }
-};
-i18nConfig.init(config);
+});
 
 @Component({
   name: 'app'
