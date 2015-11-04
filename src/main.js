@@ -23,7 +23,7 @@ let config = {
   translations: {
     en_US : {
       app : {
-        title: 'Title',
+        title: 'My first Dali app :)',
         total: 'Total: {{total, plural, =0 { You have no new messages } =1 { You have one new message } other { You have # new messages }}}',
         gender: '{{friendGender, gender, male { Invite him } female { Invite her } other { Invite them }}}'
       }
@@ -42,7 +42,7 @@ i18nConfig.init(config);
 @Inject(RouterContent, MenuBar)
 class App {
   @Bindable
-  appName = "My Fist DALI App!!";
+  title = "app.title";
 
   @Bindable
   date = new Date();

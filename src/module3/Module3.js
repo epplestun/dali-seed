@@ -2,11 +2,22 @@ import {
   RouterConfig,
   View,
   Runnable,
-  AsyncTask,
+  Async,
 } from 'dali';
 
 import {DataShow} from 'directives/DataShow';
 import {MyComponent} from './MyComponent';
+
+@Async
+class MyTask {
+  execute(a, b) {
+    for(var i = 0; i < 20000; i++) {
+      console.log(i);
+    }
+
+    return a + b;
+  }
+}
 
 @RouterConfig({
   title: 'Module 3',
@@ -24,15 +35,7 @@ export class Module3 {
   toggle() {
     this.show = !this.show;
 
-    let task = new AsyncTask((a, b) => {
-
-      for(var i = 0; i < 20000; i++) {
-        console.log(i);
-      }
-
-      return a + b;
-    });
-
+    let task = new MyTask();
     task.execute(2, 2).then((result) => {
       console.log('Result', result);
     });
