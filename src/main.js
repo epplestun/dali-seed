@@ -31,6 +31,14 @@ i18nConfig.init({
   }
 });
 
+/*
+@i18nConfig({
+  locale: 'en-US',
+  timezone: 'Europe/Madrid',
+  currency: 'EUR'
+  translationUrl : 'locale_en_US.json'
+})
+*/
 @Component({
   name: 'app'
 })
