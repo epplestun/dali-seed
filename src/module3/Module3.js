@@ -19,6 +19,11 @@ class MyTask {
   }
 }
 
+/*
+@i18nConfig({
+
+})
+*/
 @RouterConfig({
   title: 'Module 3',
   path : '/m3'

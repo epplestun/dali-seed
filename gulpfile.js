@@ -32,7 +32,7 @@ gulp.task('build-clean', function(callback) {
 });
 
 gulp.task('build-data', function() {
-	return gulp.src('src/**/*.json').pipe(gulp.dest('dist/data/'));
+	return gulp.src('src/data/*.json').pipe(gulp.dest('dist/data/'));
 });
 
 gulp.task('build-html', function() {
